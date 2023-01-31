@@ -63,7 +63,7 @@ class AppFinanceController extends ResourceController {
   }
 
   @Operation.put("number")
-  Future<Response> updateNote(
+  Future<Response> updateFinance(
       @Bind.header(HttpHeaders.authorizationHeader) String header,
       @Bind.path("number") int number,
       @Bind.body() Finance finance) async {
@@ -104,7 +104,7 @@ class AppFinanceController extends ResourceController {
   }
 
   @Operation.delete("number")
-  Future<Response> deleteNote(
+  Future<Response> deleteFinance(
       @Bind.header(HttpHeaders.authorizationHeader) String header,
       @Bind.path("number") int number) async {
     try {
@@ -137,7 +137,7 @@ class AppFinanceController extends ResourceController {
   }
 
   @Operation.get("number")
-  Future<Response> getOneNote(
+  Future<Response> getOneFinance(
       @Bind.header(HttpHeaders.authorizationHeader) String header,
       @Bind.path("number") int number,
       {@Bind.query("restore") bool? restore}) async {

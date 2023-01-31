@@ -190,8 +190,6 @@ class AppFinanceController extends ResourceController {
   Future<Response> getFinances(
       @Bind.header(HttpHeaders.authorizationHeader) String header,
       {@Bind.query("search") String? search,
-      @Bind.query("limit") int? limit,
-      @Bind.query("offset") int? offset,
       @Bind.query("filter") String? filter}) async {
     try {
       final id = AppUtils.getIdFromHeader(header);
@@ -221,12 +219,12 @@ class AppFinanceController extends ResourceController {
           financeQuery.where((finance) => finance.status).notEqualTo("deleted");
           break;
       }
-      if (limit != null && limit > 0) {
-        financeQuery.fetchLimit = limit;
-      }
-      if (offset != null && offset > 0) {
-        financeQuery.offset = offset;
-      }
+      // if (limit != null && limit > 0) {
+      //   financeQuery.fetchLimit = limit;
+      // }
+      // if (offset != null && offset > 0) {
+      //   financeQuery.offset = offset;
+      // }
       final finances = await financeQuery.fetch();
       List notesJson = List.empty(growable: true);
       for (final finance in finances) {

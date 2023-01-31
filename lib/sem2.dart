@@ -39,7 +39,7 @@ class AppService extends ApplicationChannel {
     final password = Platform.environment['DB_PASSWORD'] ?? '12345678';
     final host = Platform.environment['DB_HOST'] ?? '127.0.0.1';
     final port = int.parse(Platform.environment['DB_PORT'] ?? '5432');
-    final databaseName = Platform.environment['DB_NAME'] ?? 'postgres';
+    final databaseName = Platform.environment['DB_NAME'] ?? 'finance';
     return PostgreSQLPersistentStore(
         username, password, host, port, databaseName);
   }

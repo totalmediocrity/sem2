@@ -15,7 +15,7 @@ class AppTokenContoller extends Controller {
       final header = request.raw.headers.value(HttpHeaders.authorizationHeader);
       // Из header получаем token
       final token = const AuthorizationBearerParser().parse(header);
-  final String secretKey =
+      final String secretKey =
       Platform.environment['SECRET_KEY'] ?? 'SECRET_KEY';
       // Получаем jwtClaim для проверки token
       final jwtClaim = verifyJwtHS256Signature(token ?? "",secretKey );

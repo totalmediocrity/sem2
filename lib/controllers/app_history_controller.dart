@@ -13,11 +13,15 @@ class AppHistoryController extends ResourceController {
 
   @Operation.get()
   Future<Response> getHistory(
-      @Bind.header(HttpHeaders.authorizationHeader) String header) async {
+      @Bind.header(HttpHeaders.authorizationHeader) String header,
+      {@Bind.query("limit") int? limit,
+      @Bind.query("offset") int? offset}) async {
     try {
       final currentUserId = AppUtils.getIdFromHeader(header);
       final historyQuery = Query<History>(managedContext)
-        ..where((history) => history.user!.id).equalTo(currentUserId);
+        ..where((history) => history.user!.id).equalTo(currentUserId)
+        ..fetchLimit = limit!
+        ..offset = offset!;
       final histories = await historyQuery.fetch();
       List historiesJson = List.empty(growable: true);
       for (final history in histories) {

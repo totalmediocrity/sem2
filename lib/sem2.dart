@@ -21,7 +21,7 @@ class AppService extends ApplicationChannel {
     return super.prepare();
   }
 
- @override
+  @override
   Controller get entryPoint => Router()
     ..route('token/[:refresh]').link(
       () => AppAuthController(managedContext),
@@ -29,10 +29,9 @@ class AppService extends ApplicationChannel {
     ..route('user')
         .link(AppTokenContoller.new)!
         .link(() => AppUserController(managedContext))
-    ..route('post/[:id]')
+    ..route('post/[:number]')
         .link(AppTokenContoller.new)!
         .link(() => AppFinanceController(managedContext));
-
 
   PersistentStore _initDatabase() {
     final username = Platform.environment['DB_USERNAME'] ?? 'postgres';

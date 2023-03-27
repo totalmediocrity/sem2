@@ -11,7 +11,7 @@ class AppFinanceController extends ResourceController {
 
   final ManagedContext managedContext;
 
-  @Operation.post()
+  @Operation.put()
   Future<Response> createFinance(
       @Bind.header(HttpHeaders.authorizationHeader) String header,
       @Bind.body() Finance finance) async {
@@ -62,7 +62,7 @@ class AppFinanceController extends ResourceController {
     }
   }
 
-  @Operation.put("number")
+  @Operation.post("number")
   Future<Response> updateFinance(
       @Bind.header(HttpHeaders.authorizationHeader) String header,
       @Bind.path("number") int number,
@@ -83,6 +83,7 @@ class AppFinanceController extends ResourceController {
         ..where((finance) => finance.id).equalTo(financeDB.id)
         ..values.category = finance.category
         ..values.name = finance.name
+        ..values.total = finance.total
         ..values.description = finance.description
         ..values.noteDateCreated = DateTime.now().toString()
         ..values.status = "updated";

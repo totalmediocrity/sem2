@@ -66,19 +66,6 @@
 12.История:
 <img src="https://sun9-16.userapi.com/impg/DqKZueGuB6pfQ20WuEoWoHyZySbFm8PAkM4Jzg/vAI8EY9pD0w.jpg?size=763x797&quality=96&sign=3b9ce09823efe3e265a72a0d69d02187&type=album">
 
-По итогу, проект имеет следующий вид:
-
-<img src="">
-
-<img src="">
-
-<img src="">
-
-<img src="">
-
-<img src="">
-
-<img src="">
 
 ## Вывод: в ходе практической работы была реализовано API. 
 [Вверх](#up)
